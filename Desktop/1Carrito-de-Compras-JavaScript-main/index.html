@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" type="image/svg+xml" href="./images/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header>
+        <div class="header-section container">
+            <img class="logo" src="./images/logoShop.png" alt="Logo">
+            <div>
+                <img onclick="showCart()" class="cart" src="./images/cart.png" alt="Cart">
+                <p class="count-product">0</p>
+            </div>
+            <div class="cart-products" id="products-id">
+                <p class="close-btn" onclick="closeBtn()">X</p>
+                <h3>Mi carrito</h3>
+                <div class="card-items"></div>
+                <h2>Total: $<strong class="price-total">0</strong></h2>
+                <button onclick="showOrderForm()" class="checkout-btn">Оформить заказ</button>
+            </div>
+        </div>
+    </header>
+    
+    <section class="container">
+        <div class="products">
+            
+
+            <div class="carts">
+                <div>
+                    <img src="./images/products/keyboard-1.jpg" alt="Keyboard">
+                    <p><span>20</span>$</p>
+                </div>
+                <p class="title">Tempest Cataclysm Combo 3 En 1 Gaming Teclado</p>
+                <a href="#" data-id="1" class="btn-add-cart">add to cart</a>
+            </div>
+            
+            
+            <div class="carts">
+                <div>
+                    <img src="./images/products/keyboard-2.jpg" alt="Keyboard">
+                    <p><span>35</span>$</p>
+                </div>
+                <p class="title">Newskill Suiko Ivory Teclado Mecanico Gaming Full RGB</p>
+                <a href="#" data-id="2" class="btn-add-cart">add to cart</a>
+            </div>
+            
+            
+            <div class="carts">
+                <div>
+                    <img src="./images/products/keyboard-3.jpg" alt="Keyboard">
+                    <p><span>15.50</span>$</p>
+                </div>
+                <p class="title">Aukey KM-G16 Teclado Mecanico Gaming Retroiluminado</p>
+                <a href="#" data-id="3" class="btn-add-cart">add to cart</a>
+            </div>
+            
+            
+            <div class="carts">
+                <div>
+                    <img src="./images/products/keyboard-4.jpg" alt="Keyboard">
+                    <p><span>20.20</span>$</p>
+                </div>
+                <p class="title">Razer Huntsman Elite Teclado Mecanico Gaming RGB</p>
+                <a href="#" data-id="4" class="btn-add-cart">add to cart</a>
+            </div>
+            
+            
+            <div class="carts">
+                <div>
+                    <img src="./images/products/keyboard-5.jpg" alt="Keyboard">
+                    <p><span>19</span>$</p>
+                </div>
+                <p class="title">Trust GXT 856 Torac Teclado Metalico Gaming RGB</p>
+                <a href="#" data-id="5" class="btn-add-cart">add to cart</a>
+            </div>
+            
+            
+            <div class="carts">
+                <div>
+                    <img src="./images/products/keyboard-1.jpg" alt="Keyboard">
+                    <p><span>45</span>$</p>
+                </div>
+                <p class="title">MSI Vigor GK30 Teclado Gaming RGB</p>
+                <a href="#" data-id="6" class="btn-add-cart">add to cart</a>
+            </div>
+            
+            
+            <div class="carts">
+                <div>
+                    <img src="./images/products/keyboard-2.jpg" alt="Keyboard">
+                    <p><span>23.99</span>$</p>
+                </div>
+                <p class="title">Genesis Thor 300 RGB Teclado Mecanico Gaming RGB Switch Rojo</p>
+                <a href="#" data-id="7" class="btn-add-cart">add to cart</a>
+            </div>
+            
+            
+            <div class="carts">
+                <div>
+                    <img src="./images/products/keyboard-3.jpg" alt="Keyboard">
+                    <p><span>50</span>$</p>
+                </div>
+                <p class="title">Mars Gaming MKXTKL Teclado Mecanico Gaming RGB</p>
+                <a href="#" data-id="8" class="btn-add-cart">add to cart</a>
+            </div>
+            
+            
+            <div class="carts">
+                <div>
+                    <img src="./images/products/keyboard-4.jpg" alt="Keyboard">
+                    <p><span>16</span>$</p>
+                </div>
+                <p class="title">Trust GXT 881 Odyss Teclado Gaming Semi-Mecanico RGB</p>
+                <a href="#" data-id="9" class="btn-add-cart">add to cart</a>
+            </div>
+            
+            
+            <div class="carts">
+                <div>
+                    <img src="./images/products/keyboard-5.jpg" alt="Keyboard">
+                    <p><span>17.50</span>$</p>
+                </div>
+                <p class="title">Krom Krusher Teclado Gaming Hibrido RGB + Raton</p>
+                <a href="#" data-id="10" class="btn-add-cart">add to cart</a>
+            </div>
+            
+            
+            <div class="carts">
+                <div>
+                    <img src="./images/products/keyboard-1.jpg" alt="Keyboard">
+                    <p><span>45</span>$</p>
+                </div>
+                <p class="title">Corsair K55 RGB PRO XT Teclado Gaming Retroiluminado Negro</p>
+                <a href="#" data-id="11" class="btn-add-cart">add to cart</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- окно оформления заказа -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeOrderForm()">&times;</span>
+            <h2>Оформление заказа</h2>
+            <form id="orderForm">
+                <div class="form-group">
+                    <label for="customerName">ФИО:</label>
+                    <input type="text" id="customerName" name="customerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="customerEmail">Email:</label>
+                    <input type="email" id="customerEmail" name="customerEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="customerPhone">Телефон:</label>
+                    <input type="tel" id="customerPhone" name="customerPhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="customerAddress">Адрес доставки:</label>
+                    <textarea id="customerAddress" name="customerAddress" rows="3" required></textarea>
+                </div>
+                <div class="order-summary">
+                    <h3>Детали заказа</h3>
+                    <div id="orderItemsList"></div>
+                    <p class="order-total">Итого: $<span id="orderTotal">0</span></p>
+                </div>
+                <button type="submit" class="submit-order-btn">Подтвердить заказ</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p class="author">🪐 by <a href="https://github.com/garu2" target="_blank">GaryAT</a></p>
+    </footer>
+
+    <script>
+        //переменные для корзины
+        let buyThings = [];
+        let totalCard = 0;
+        let countProduct = 0;
+
+        function showCart() {
+            document.getElementById("products-id").style.display = "block";
+        }
+        
+        function closeBtn() {
+            document.getElementById("products-id").style.display = "none";
+        }
+
+        function showOrderForm() {
+            if (buyThings.length === 0) {
+                alert('Ваша корзина пуста!');
+                return;
+            }
+            
+            const modal = document.getElementById('orderModal');
+            const orderItemsList = document.getElementById('orderItemsList');
+            const orderTotal = document.getElementById('orderTotal');
+            
+            //заполняем список товаров
+            orderItemsList.innerHTML = '';
+            buyThings.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'order-item';
+                itemDiv.innerHTML = `
+                    <p>${item.title} - ${item.amount} шт. x $${item.price} = $${(item.amount * parseFloat(item.price)).toFixed(2)}</p>
+                `;
+                orderItemsList.appendChild(itemDiv);
+            });
+            
+            //устанавливаем итоговую сумму
+            orderTotal.textContent = totalCard;
+            
+            //показываем окно оформления заказа
+            modal.style.display = 'block';
+            document.getElementById("products-id").style.display = "none";
+        }
+
+        function closeOrderForm() {
+            document.getElementById('orderModal').style.display = 'none';
+        }
+
+        //отправка формы
+        document.getElementById('orderForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const orderData = {
+                customerName: document.getElementById('customerName').value,
+                customerEmail: document.getElementById('customerEmail').value,
+                customerPhone: document.getElementById('customerPhone').value,
+                customerAddress: document.getElementById('customerAddress').value,
+                cartItems: buyThings,
+                totalAmount: totalCard
+            };
+
+            try {
+                // отправляем запрос на сервер
+                const response = await fetch('/api/place-order', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(orderData)
+                });
+
+                const result = await response.json();
+                
+                if (result.success) {
+                    alert('Заказ оформлен. Номер вашего заказа: ' + result.orderId);
+                    
+                    // очищаем корзину после оформления заказа
+                    buyThings = [];
+                    totalCard = 0;
+                    countProduct = 0;
+                    
+                    // обновление отображения корзины
+                    document.querySelector('.card-items').innerHTML = '';
+                    document.querySelector('.price-total').textContent = '0';
+                    document.querySelector('.count-product').textContent = '0';
+                    
+                    // очищаем локальное хранилище
+                    localStorage.removeItem('shoppingCart');
+                    
+                    // закрываем окно оформления заказа и сбрасываем форму
+                    closeOrderForm();
+                    document.getElementById('orderForm').reset();
+                    document.getElementById("products-id").style.display = "none";
+                } else {
+                    alert('Ошибка при оформлении заказа: ' + result.error);
+                }
+            } catch (error) {
+                console.error('Ошибка:', error);
+                alert('Произошла ошибка при отправке заказа. Пожалуйста, попробуйте позже.');
+            }
+        });
+    </script>
+    
+    <script src="./custom.js"></script>
+</body>
+</html>
